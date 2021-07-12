@@ -22,5 +22,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('profile', App\Http\Controllers\ProfileController::class)->only('edit', 'update')->middleware(['auth']);
+Route::resource('lots', App\Http\Controllers\LotController::class)->only('create', 'store')->middleware(['auth']);
 
 require __DIR__ . '/auth.php';
