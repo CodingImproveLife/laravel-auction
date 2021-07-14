@@ -13,15 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('profile', App\Http\Controllers\ProfileController::class)->only('edit', 'update')->middleware(['auth']);
-Route::resource('lots', App\Http\Controllers\LotController::class)->only('create', 'store')->middleware(['auth']);
+Route::resource('lots', App\Http\Controllers\LotController::class)->middleware(['auth']);
 
 require __DIR__ . '/auth.php';

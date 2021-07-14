@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Home page') }}
+            All Lots
         </h2>
     </x-slot>
 
@@ -9,15 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="container mx-auto">
-                        @include('layouts.errors-message')
-                        <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-4">
-                            @if($lots->isNotEmpty())
+                    @if($lots->isNotEmpty())
+                        <div class="container mx-auto">
+                            @include('layouts.success-message')
+                            <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-4">
                                 @foreach($lots as $lot)
                                     <div class="md:flex m-5 p-3 items-center rounded-md shadow-md">
                                         <div class="w-28 px-1">
-                                            <svg class="h-24" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                 viewBox="0 0 24 24"
+                                            <svg class="h-24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                  stroke="#ccc">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                       stroke-width="2"
@@ -28,18 +27,19 @@
                                             <div class="p-2">
                                                 <a class="hover:border-yellow-500 border-b"
                                                    href="{{route('lots.show', $lot->id)}}">
-                                                    <strong>{{ Str::limit($lot->name, 20) }}</strong>
+                                                    <strong>{{Str::limit($lot->name, 20)}}</strong>
                                                 </a>
                                             </div>
-                                            <div class="p-2">{{ Str::limit($lot->description, 40) }}</div>
+                                            <div class="p-2">{{Str::limit($lot->description, 40)}}</div>
                                         </div>
                                     </div>
                                 @endforeach
-                            @else
-                                <div>No lots found.</div>
-                            @endif
+                            </div>
+                            <div>{{$lots->links()}}</div>
                         </div>
-                    </div>
+                    @else
+                        <p>You have not uploaded any lot.</p>
+                    @endif
                 </div>
             </div>
         </div>
