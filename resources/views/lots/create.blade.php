@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @include('layouts.errors-message')
-                    <form class="flex flex-wrap" method="post" action="{{route('lots.store')}}">
+                    <form class="flex flex-wrap" method="post" action="{{route('lots.store')}}" enctype="multipart/form-data">
                         @csrf
                         <label class="block mb-1" for="lot-title">Lot name</label>
                         <input
@@ -34,6 +34,14 @@
                             type="number"
                             min="0"
                             value="0"/>
+                        <label class="block mb-1" for="lot-image">Lot image</label>
+                        <input
+                            id="lot-image"
+                            name="image[]"
+                            class="w-full h-10 my-2 text-base text-gray-700 focus:shadow-outline"
+                            type="file"
+                            multiple
+                        />
                         <button
                             type="submit"
                             class="h-10 px-5 mt-3 text-gray-100 transition-colors duration-200

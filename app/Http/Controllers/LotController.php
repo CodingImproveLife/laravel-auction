@@ -48,7 +48,7 @@ class LotController extends Controller
     public function store(StoreService $service)
     {
         $service->saveLot();
-        return redirect()->route('dashboard')->with('success', 'Lot created successfully.');
+        return redirect()->route('lots.index')->with('success', 'Lot created successfully.');
     }
 
     /**

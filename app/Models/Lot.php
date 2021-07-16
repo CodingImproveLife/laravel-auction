@@ -23,4 +23,12 @@ class Lot extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get lot images.
+     */
+    public function images()
+    {
+        return $this->hasMany(LotImage::class);
+    }
 }
