@@ -35,10 +35,11 @@
                                         </div>
                                     </div>
                                 @endforeach
-                            @else
-                                <div>No lots found.</div>
-                            @endif
                         </div>
+                        <div>{{$lots->links()}}</div>
+                        @else
+                            <div>No lots found.</div>
+                        @endif
                     </div>
                 </div>
             </div>
