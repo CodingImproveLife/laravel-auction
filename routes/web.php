@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::resource('profile', App\Http\Controllers\ProfileController::class)->only('edit', 'update')->middleware(['auth']);
-Route::resource('lots', App\Http\Controllers\LotController::class)->middleware(['auth']);
-Route::delete('lot-images/{id}', [App\Http\Controllers\LotImageController::class, 'destroy'])->name('lot-images.destroy')->middleware(['auth']);
+    Route::resource('profile', App\Http\Controllers\ProfileController::class)->only('edit', 'update');
+    Route::resource('lots', App\Http\Controllers\LotController::class);
+    Route::delete('lot-images/{id}', [App\Http\Controllers\LotImageController::class, 'destroy'])->name('lot-images.destroy');
+});
 
 require __DIR__ . '/auth.php';
