@@ -21,5 +21,6 @@ Route::get('/dashboard', function () {
 
 Route::resource('profile', App\Http\Controllers\ProfileController::class)->only('edit', 'update')->middleware(['auth']);
 Route::resource('lots', App\Http\Controllers\LotController::class)->middleware(['auth']);
+Route::delete('lot-images/{id}', [App\Http\Controllers\LotImageController::class, 'destroy'])->name('lot-images.destroy')->middleware(['auth']);
 
 require __DIR__ . '/auth.php';

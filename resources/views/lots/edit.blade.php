@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @include('layouts.errors-message')
-                    <form class="flex flex-wrap flex-col" method="post" enctype="multipart/form-data"
+                    <form class="flex flex-wrap flex-col mb-5" method="post" enctype="multipart/form-data"
                           action="{{route('lots.update', $lot->id)}}">
                         @csrf
                         @method('PATCH')
@@ -35,6 +35,14 @@
                             type="number"
                             min="0"
                             value="{{ $lot->start_price }}"/>
+                        <label class="block mb-1" for="lot-image">Lot image</label>
+                        <input
+                            id="lot-image"
+                            name="image[]"
+                            class="w-full h-10 my-2 text-base text-gray-700 focus:shadow-outline"
+                            type="file"
+                            multiple
+                        />
                         <button
                             type="submit"
                             class="h-10 w-24 px-5 mt-3 text-gray-100 transition-colors duration-200
@@ -42,6 +50,7 @@
                             Update
                         </button>
                     </form>
+                    @include('layouts.lot-images', ['deleteButton' => true])
                 </div>
             </div>
         </div>
