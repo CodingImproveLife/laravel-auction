@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class LotController extends Controller
 {
@@ -72,6 +73,7 @@ class LotController extends Controller
     public function edit(int $id)
     {
         $lot = Lot::findOrFail($id);
+        Gate::authorize('edit-lot', $lot);
         return view('lots.edit', compact('lot'));
     }
 
