@@ -6,7 +6,6 @@ use App\Http\Requests\StoreLotRequest;
 use App\Models\Lot;
 use App\Services\Lot\DeleteService;
 use App\Services\Lot\StoreService;
-use App\Services\Lot\UpdateService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -48,7 +47,7 @@ class LotController extends Controller
      */
     public function store(StoreService $service)
     {
-        $service->saveLot();
+        $service->storeLot();
         return redirect()->route('lots.index')->with('success', 'Lot created successfully.');
     }
 
@@ -84,9 +83,9 @@ class LotController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(StoreLotRequest $request, int $id)
+    public function update(StoreService $service, int $id)
     {
-        UpdateService::update($request, $id);
+        $service->updateLot($id);
         return redirect()->route('lots.show', $id)->with('success', 'Lot update successfully.');
     }
 
