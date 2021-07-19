@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Gate;
 
 class StoreService
 {
+    private StoreLotRequest $request;
+
     public function __construct(StoreLotRequest $request)
     {
         $this->request = $request;
