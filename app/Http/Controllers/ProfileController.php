@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateProfileRequest;
-use App\Models\User;
+use App\Services\UpdateProfileService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -26,14 +24,12 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateProfileRequest $request
+     * @param UpdateProfileService $service
      * @return Application|Redirector|RedirectResponse
      */
-    public function update(UpdateProfileRequest $request)
+    public function update(UpdateProfileService $service)
     {
-        $user = User::findOrFail(Auth::id());
-        $user->name = $request->name;
-        $user->save();
+        $service->update();
         return redirect(route('dashboard'))->with('success', 'Profile updated successfully.');
     }
 }
