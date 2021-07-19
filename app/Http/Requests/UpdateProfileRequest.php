@@ -25,6 +25,7 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'photo' => 'image|max:1024|dimensions:min_width=50,min_height=50',
         ];
     }
 }
