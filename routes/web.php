@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('profile', App\Http\Controllers\ProfileController::class)->only('edit', 'update');
     Route::resource('lots', App\Http\Controllers\LotController::class);
     Route::delete('lot-images/{id}', [App\Http\Controllers\LotImageController::class, 'destroy'])->name('lot-images.destroy');
+    Route::get('profile/add-money', [App\Http\Controllers\ProfileController::class, 'topUpBalance'])->name('profile.addMoney');
 });
 
 require __DIR__ . '/auth.php';
