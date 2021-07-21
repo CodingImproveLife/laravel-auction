@@ -63,7 +63,7 @@ class StoreService
         if (!empty($this->request->image)) {
             foreach ($this->request->image as $image) {
                 $lotImage = new LotImage;
-                $lotImage->path = $image->store('lots', 'public');
+                $lotImage->path = $image->store('lots/' . $lotId, 'public');
                 $lotImage->lot_id = $lotId;
                 $lotImage->save();
             }

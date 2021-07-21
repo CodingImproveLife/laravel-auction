@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Lot extends Model
 {
@@ -30,5 +31,16 @@ class Lot extends Model
     public function images()
     {
         return $this->hasMany(LotImage::class);
+    }
+
+    /**
+     * Deleting a folder with images after deleting a lot.
+     */
+    protected static function booted()
+    {
+        static::deleted(function ($lot) {
+            $lot->images()->delete();
+            Storage::disk('local')->deleteDirectory('public/lots/' . $lot->id);
+        });
     }
 }
