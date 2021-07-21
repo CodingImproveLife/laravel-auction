@@ -16,12 +16,12 @@
                                 @foreach($lots as $lot)
                                     <div class="md:flex m-5 p-3 items-center rounded-md shadow-md">
                                         <div class="w-28 px-1">
-                                            <svg class="h-24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke="#ccc">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      stroke-width="2"
-                                                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                            </svg>
+                                            @if($lot->images->isNotEmpty())
+                                                <img class="max-h-24 max-w-24 p-1"
+                                                     src="{{ asset('/storage/' . $lot->images[0]->path) }}">
+                                            @else
+                                                <x-default-lot-image/>
+                                            @endif
                                         </div>
                                         <div class="flex flex-col">
                                             <div class="p-2">
