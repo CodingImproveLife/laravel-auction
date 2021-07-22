@@ -33,6 +33,18 @@
                                 </button>
                             </form>
                         </div>
+                    @else
+                        <form action="{{ route('bid') }}" method="post" class="mt-5">
+                            @csrf
+                            <input class="w-14 rounded text-gray-400"
+                                   type="text"
+                                   name="bid">
+                            <button name="lot" value="{{ $lot->id }}"
+                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                                    type="submit">
+                                Bid
+                            </button>
+                        </form>
                     @endif
                 </div>
             </div>
