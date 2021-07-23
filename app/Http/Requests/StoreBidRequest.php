@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\BalanceMoreThenUserBids;
+use App\Rules\GreaterThanMaxBid;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBidRequest extends FormRequest
@@ -34,6 +36,8 @@ class StoreBidRequest extends FormRequest
                 'numeric',
                 'integer',
                 'min:1',
+                new GreaterThanMaxBid($this->lot),
+                new BalanceMoreThenUserBids
             ]
         ];
     }

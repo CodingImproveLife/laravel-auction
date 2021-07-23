@@ -34,6 +34,14 @@ class Lot extends Model
     }
 
     /**
+     * Get lot bids.
+     */
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
+
+    /**
      * Deleting a folder with images after deleting a lot.
      */
     protected static function booted()

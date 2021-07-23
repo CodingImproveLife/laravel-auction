@@ -10,6 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @include('layouts.success-message')
+                    @include('layouts.errors-message')
                     <div class="flex justify-end pb-3 pr-3 text-green-500 text-5xl">
                         ${{ $lot->start_price }}
                     </div>
@@ -34,17 +35,19 @@
                             </form>
                         </div>
                     @else
-                        <form action="{{ route('bid') }}" method="post" class="mt-5">
-                            @csrf
-                            <input class="w-14 rounded text-gray-400"
-                                   type="text"
-                                   name="bid">
-                            <button name="lot" value="{{ $lot->id }}"
-                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                                    type="submit">
-                                Bid
-                            </button>
-                        </form>
+                        <div class="mt-5">
+                            <form action="{{ route('bid') }}" method="post">
+                                @csrf
+                                <input class="w-14 rounded text-gray-400"
+                                       type="text"
+                                       name="bid">
+                                <button name="lot" value="{{ $lot->id }}"
+                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                                        type="submit">
+                                    Bid
+                                </button>
+                            </form>
+                        </div>
                     @endif
                 </div>
             </div>
