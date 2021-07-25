@@ -51,6 +51,7 @@ class StoreService
         $lot->name = $this->request->title;
         $lot->description = $this->request->description;
         $lot->start_price = $this->request->price;
+        $lot->end_time = \Carbon\Carbon::now()->addDay();
         $lot->save();
     }
 
