@@ -42,7 +42,7 @@ class Lot extends Model
     }
 
     /**
-     * Get lot status
+     * Get lot status.
      *
      * @param string $value
      * @return string
@@ -52,6 +52,17 @@ class Lot extends Model
         if ($value === 'sale') return 'On sale';
         if ($value === 'sold') return 'Sold';
         return 'Draft';
+    }
+
+    /**
+     * Get the starting price of the lot or the maximum bid value.
+     *
+     * @param int $value
+     * @return mixed
+     */
+    public function getStartPriceAttribute($value)
+    {
+        return $this->bids->isNotEmpty() ? $this->bids->max('price') : $value;
     }
 
     /**
