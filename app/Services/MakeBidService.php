@@ -4,17 +4,21 @@ namespace App\Services;
 
 use App\Http\Requests\StoreBidRequest;
 use App\Models\Bid;
+use App\Models\Lot;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class MakeBidService
 {
     public Bid $bid;
     private StoreBidRequest $request;
+    private Lot $lot;
 
     public function __construct(StoreBidRequest $request)
     {
         $this->request = $request;
+        $this->lot = Lot::findOrFail($request->lot);
         $this->storeBid();
     }
 
@@ -23,6 +27,8 @@ class MakeBidService
      */
     private function storeBid()
     {
+        Gate::authorize('store-bid', $this->lot);
+
         DB::transaction(function () {
             Bid::where('user_id', Auth::id())
                 ->where('lot_id', $this->request->lot)

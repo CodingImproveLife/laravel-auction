@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Lot;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -29,6 +30,14 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('edit-lot', function (User $user, Lot $lot) {
             return $user->id === $lot->user_id;
+        });
+
+        Gate::define('store-bid', function (User $user, Lot $lot) {
+            $notOwnLot = $user->id !== $lot->user_id;
+            $saleTimeNotExpired = Carbon::now()->lessThanOrEqualTo($lot->end_time);
+            $lotOnSale = $lot->status === 'On sale';
+
+            return $notOwnLot && $saleTimeNotExpired && $lotOnSale;
         });
     }
 }
