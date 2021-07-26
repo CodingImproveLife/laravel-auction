@@ -11,8 +11,13 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @include('layouts.success-message')
                     @include('layouts.errors-message')
-                    <div class="flex justify-end pb-3 pr-3 text-green-500 text-5xl">
-                        ${{ $lot->start_price }}
+                    <div class="flex justify-between mb-3 mr-3">
+                        <div class="px-2 py-1 text-xs h-5 font-bold leading-none text-yellow-100 bg-yellow-600 rounded-full">
+                            {{ $lot->status }}
+                        </div>
+                        <div class="text-green-500 text-5xl">
+                            ${{ $lot->start_price }}
+                        </div>
                     </div>
                     <div class="mb-7">{{ $lot->description }}</div>
                     @include('layouts.lot-images')

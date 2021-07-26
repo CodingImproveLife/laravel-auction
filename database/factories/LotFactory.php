@@ -27,6 +27,7 @@ class LotFactory extends Factory
             'description' => $this->faker->text(100),
             'start_price' => $this->faker->numberBetween(0, 200),
             'user_id' => User::all()->random()->id,
+            'status' => $this->faker->randomElement(['draft', 'sale', 'sold']),
         ];
     }
 }

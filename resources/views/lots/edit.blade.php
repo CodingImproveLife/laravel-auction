@@ -43,6 +43,18 @@
                             type="file"
                             multiple
                         />
+                        <div class="w-full">
+                            <input
+                                id="sale-lot"
+                                name="for_sale"
+                                class="form-checkbox h-5 w-5 text-gray-600 focus:ring-transparent"
+                                type="checkbox"
+                                @if($lot->status === 'On sale')
+                                    checked
+                                @endif
+                            />
+                            <label for="sale-lot" class="inline-flex items-center">Put up for sale</label>
+                        </div>
                         <button
                             type="submit"
                             class="h-10 w-24 px-5 mt-3 text-gray-100 transition-colors duration-200

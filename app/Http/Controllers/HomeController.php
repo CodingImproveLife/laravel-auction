@@ -16,7 +16,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lots = Lot::orderByDesc('updated_at')->paginate(6);
+        $lots = Lot::where('status', 'sale')
+            ->orderByDesc('updated_at')
+            ->paginate(6);
         return view('home', compact('lots'));
     }
 }

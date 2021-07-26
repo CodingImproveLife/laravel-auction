@@ -42,6 +42,19 @@ class Lot extends Model
     }
 
     /**
+     * Get lot status
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getStatusAttribute($value)
+    {
+        if ($value === 'sale') return 'On sale';
+        if ($value === 'sold') return 'Sold';
+        return 'Draft';
+    }
+
+    /**
      * Deleting a folder with images after deleting a lot.
      */
     protected static function booted()
