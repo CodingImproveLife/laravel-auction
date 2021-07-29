@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreLotRequest;
 use App\Models\Category;
 use App\Models\Lot;
 use App\Services\Lot\DeleteService;
@@ -11,7 +10,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -56,33 +54,31 @@ class LotController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param Lot $lot
      * @return Application|Factory|View
      */
-    public function show(int $id)
+    public function show(Lot $lot)
     {
-        $lot = Lot::findOrFail($id);
         return view('lots.one', compact('lot'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param Lot $lot
      * @return Application|Factory|View
      */
-    public function edit(int $id)
+    public function edit(Lot $lot)
     {
-        $lot = Lot::findOrFail($id);
         $categories = Category::all();
-        Gate::authorize('edit-lot', $id);
+        Gate::authorize('edit-lot', $lot);
         return view('lots.edit', compact('lot', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param StoreLotRequest $request
+     * @param StoreService $service
      * @param int $id
      * @return RedirectResponse
      */
@@ -96,7 +92,7 @@ class LotController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return Application|RedirectResponse|Redirector
+     * @return RedirectResponse
      */
     public function destroy(int $id)
     {
