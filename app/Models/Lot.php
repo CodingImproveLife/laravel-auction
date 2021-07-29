@@ -42,6 +42,14 @@ class Lot extends Model
     }
 
     /**
+     * Get the category the lot belongs to.
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
      * Get lot status.
      *
      * @param string $value
