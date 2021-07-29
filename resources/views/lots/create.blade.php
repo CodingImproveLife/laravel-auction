@@ -26,6 +26,13 @@
                                 class="form-textarea my-2 block w-full rounded-lg placeholder-gray-400"
                                 rows="3"></textarea>
                         </div>
+                        <label for="category" class="mt-2">Select category</label>
+                        <select id="category" name="category"
+                                class="w-full h-10 mb-2 mt-1 pl-3 pr-5 placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">--}}
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
                         <label class="block mb-1" for="lot-price">Start price</label>
                         <input
                             id="lot-price"

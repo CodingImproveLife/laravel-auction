@@ -50,6 +50,7 @@ class StoreService
     {
         $lot->name = $this->request->title;
         $lot->description = $this->request->description;
+        $lot->category_id = $this->request->category;
         $lot->start_price = $this->request->price;
         $lot->status = $this->request->for_sale ? 'sale' : 'draft';
         $lot->end_time = \Carbon\Carbon::now()->addDay();

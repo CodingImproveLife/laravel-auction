@@ -26,6 +26,7 @@ class StoreLotRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'min:3', 'max:255'],
             'description' => ['required', 'string', 'min:10', 'max:255'],
+            'category' => 'required|numeric|integer',
             'price' => 'required|numeric|integer|min:0',
             'image.*' => 'image'
         ];

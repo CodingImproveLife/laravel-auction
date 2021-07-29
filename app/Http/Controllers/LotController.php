@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreLotRequest;
+use App\Models\Category;
 use App\Models\Lot;
 use App\Services\Lot\DeleteService;
 use App\Services\Lot\StoreService;
@@ -36,7 +37,8 @@ class LotController extends Controller
      */
     public function create()
     {
-        return view('lots.create');
+        $categories = Category::all();
+        return view('lots.create', compact('categories'));
     }
 
     /**
@@ -72,8 +74,9 @@ class LotController extends Controller
     public function edit(int $id)
     {
         $lot = Lot::findOrFail($id);
-        Gate::authorize('edit-lot', $lot);
-        return view('lots.edit', compact('lot'));
+        $categories = Category::all();
+        Gate::authorize('edit-lot', $id);
+        return view('lots.edit', compact('lot', 'categories'));
     }
 
     /**
