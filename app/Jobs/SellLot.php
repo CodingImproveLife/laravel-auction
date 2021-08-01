@@ -35,6 +35,6 @@ class SellLot implements ShouldQueue
      */
     public function handle(PurchaseService $purchase)
     {
-        $purchase->store($this->lot);
+        $purchase->save($this->lot);
     }
 }
