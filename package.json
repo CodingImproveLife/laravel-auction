@@ -21,6 +21,7 @@
         "tailwindcss": "^2.0.2"
     },
     "dependencies": {
-        "ioredis": "^4.27.6"
+        "ioredis": "^4.27.6",
+        "vue": "^2.6.14"
     }
 }
