@@ -19,7 +19,7 @@ class SellLotsCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Choosing buyers for lots on sale';
 
     /**
      * Create a new command instance.
