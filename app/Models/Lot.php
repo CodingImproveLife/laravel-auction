@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -60,6 +61,16 @@ class Lot extends Model
         if ($value === 'sale') return 'On sale';
         if ($value === 'sold') return 'Sold';
         return 'Draft';
+    }
+
+    /**
+     * Get lot sale timestamp.
+     *
+     * @return int
+     */
+    public function getSaleTimestampAttribute()
+    {
+        return Carbon::create($this->end_time)->timestamp;
     }
 
     /**
