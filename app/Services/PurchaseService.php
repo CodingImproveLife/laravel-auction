@@ -12,7 +12,7 @@ class PurchaseService
 {
     private Purchase $purchase;
     private Lot $lot;
-    private Bid $bid;
+    private ?Bid $bid;
 
     public function __construct(Purchase $purchase)
     {
