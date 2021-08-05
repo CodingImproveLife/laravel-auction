@@ -3817,24 +3817,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['saleTimestamp'],
   mounted: function mounted() {
     var _this = this;
 
+    this.setLotEndTime();
     setInterval(function () {
-      if (_this.time > 0) {
-        _this.time = _this.saleTimestamp - Math.round(Date.now() / 1000);
-      }
-
-      if (_this.time === 0) _this.sold = false;
+      _this.setLotEndTime();
     }, 1000);
   },
   data: function data() {
     return {
       time: this.saleTimestamp - Math.round(Date.now() / 1000),
-      sold: true
+      sale: true
     };
+  },
+  methods: {
+    setLotEndTime: function setLotEndTime() {
+      if (this.time > 0) {
+        this.time = this.saleTimestamp - Math.round(Date.now() / 1000);
+      } else {
+        this.sale = false;
+      }
+    }
   },
   computed: {
     hours: function hours() {
@@ -21434,7 +21442,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm.sold
+    _vm.sale
       ? _c("div", [
           _vm._v(
             _vm._s(_vm.hours) +
