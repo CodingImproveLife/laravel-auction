@@ -14,7 +14,7 @@
                         <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-4">
                             @if($lots->isNotEmpty())
                                 @foreach($lots as $lot)
-                                    <div class="flex flex-col m-5 p-3 items-center rounded-md shadow-md">
+                                    <div class="flex flex-col justify-between m-5 p-3 rounded-md shadow-md">
                                         <div class="flex">
                                             <div class="w-28 px-1">
                                                 @if($lot->images->isNotEmpty())
@@ -34,8 +34,20 @@
                                                 <div class="p-2">{{ Str::limit($lot->description, 40) }}</div>
                                             </div>
                                         </div>
-                                        <div class="flex">
-                                            <bid-countdown-timer :sale-timestamp="{{ $lot->sale_timestamp }}"></bid-countdown-timer>
+                                        <div class="flex flex-col ml-2 mt-2">
+                                            <div class="flex">
+                                                <bid-countdown-timer :sale-timestamp="{{ $lot->sale_timestamp }}"></bid-countdown-timer>
+                                            </div>
+                                            <div class="flex">
+                                                <svg class="w-4 mr-1"
+                                                     xmlns="http://www.w3.org/2000/svg"
+                                                     viewBox="0 0 24 24"
+                                                     fill="none"
+                                                     stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                                </svg>
+                                                <new-bid :lot="{{ $lot->id }}" :bid="{{ $lot->start_price }}"></new-bid>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach
