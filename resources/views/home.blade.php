@@ -36,6 +36,25 @@
                                         </div>
                                         <div class="flex flex-col ml-2 mt-2">
                                             <div class="flex">
+                                                <svg class="w-4 mr-1"
+                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                     fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                          d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                          clip-rule="evenodd"/>
+                                                </svg>
+                                                {{ $lot->user->username }}
+                                            </div>
+                                            <div class="flex">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 mr-1" viewBox="0 0 20 20"
+                                                     fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                          d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z"
+                                                          clip-rule="evenodd"/>
+                                                </svg>
+                                                {{$lot->category->name}}
+                                            </div>
+                                            <div class="flex">
                                                 <bid-countdown-timer :sale-timestamp="{{ $lot->sale_timestamp }}"></bid-countdown-timer>
                                             </div>
                                             <div class="flex">
