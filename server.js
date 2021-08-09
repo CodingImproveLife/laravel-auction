@@ -4,7 +4,7 @@ const redis = new ioRedis();
 
 const io = require("socket.io")(http, {
     cors: {
-        origin: 'http://localhost',
+        origin: process.env.APP_URL,
         credentials: true,
         methods: ["GET"]
     }
@@ -17,6 +17,6 @@ redis.on('message', function (channel, message) {
     io.emit(channel + ':' + message.event, message.data);
 });
 
-http.listen(5555, function () {
-    console.log('Server start on 5555');
+http.listen(MIX_NODE_PORT, function () {
+    console.log('Server start on ' + process.env.MIX_NODE_PORT);
 });

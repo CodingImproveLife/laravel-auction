@@ -3880,7 +3880,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['lot', 'bid'],
   data: function data() {
     return {
-      socket: io('http://localhost:5555'),
+      socket: io("http://localhost" + ':' + "5555"),
       maxBid: this.bid,
       lotId: this.lot
     };

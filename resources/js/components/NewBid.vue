@@ -9,7 +9,7 @@ export default {
     props: ['lot', 'bid'],
     data() {
         return {
-            socket: io('http://localhost:5555'),
+            socket: io(process.env.MIX_APP_URL + ':' + process.env.MIX_NODE_PORT),
             maxBid: this.bid,
             lotId: this.lot,
         }
