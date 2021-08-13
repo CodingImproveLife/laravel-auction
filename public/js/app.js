@@ -3909,6 +3909,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./ckeditor */ "./resources/js/ckeditor.js");
+
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
 
@@ -3950,6 +3952,46 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/ckeditor.js":
+/*!**********************************!*\
+  !*** ./resources/js/ckeditor.js ***!
+  \**********************************/
+/***/ (() => {
+
+if (document.querySelector('#lot-description')) {
+  document.addEventListener("DOMContentLoaded", function () {
+    ClassicEditor.create(document.querySelector('#lot-description'), {
+      toolbar: ['bold', 'italic', 'heading', 'link', 'numberedList', 'bulletedList', 'insertTable', 'undo', 'redo'],
+      heading: {
+        options: [{
+          model: 'paragraph',
+          title: 'Paragraph',
+          "class": 'ck-heading_paragraph'
+        }, {
+          model: 'heading2',
+          view: 'h2',
+          title: 'Heading 2',
+          "class": 'ck-heading_heading2'
+        }, {
+          model: 'heading3',
+          view: 'h3',
+          title: 'Heading 3',
+          "class": 'ck-heading_heading3'
+        }, {
+          model: 'heading4',
+          view: 'h4',
+          title: 'Heading 4',
+          "class": 'ck-heading_heading4'
+        }]
+      }
+    })["catch"](function (error) {
+      console.error(error);
+    });
+  });
+}
 
 /***/ }),
 

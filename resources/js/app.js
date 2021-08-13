@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('./ckeditor');
 
 require('alpinejs');
 

@@ -28,7 +28,7 @@
                         </svg>
                         {{ $lot->category->name }}
                     </div>
-                    <div class="mb-7">{{ $lot->description }}</div>
+                    <div class="mb-7">{!! $lot->description !!}</div>
                     @include('layouts.lot-images')
                     @if($lot->user_id === Auth::id())
                         <div class="flex">
