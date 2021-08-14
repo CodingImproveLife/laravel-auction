@@ -7,6 +7,7 @@ use App\Models\Lot;
 use App\Models\LotImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Mews\Purifier\Facades\Purifier;
 
 class StoreService
 {
@@ -49,7 +50,7 @@ class StoreService
     private function saveLot(Lot $lot)
     {
         $lot->name = $this->request->title;
-        $lot->description = $this->request->description;
+        $lot->description = Purifier::clean($this->request->description);
         $lot->category_id = $this->request->category;
         $lot->start_price = $this->request->price;
         $lot->status = $this->request->for_sale ? 'sale' : 'draft';
