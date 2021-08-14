@@ -27,10 +27,10 @@
                                             <div class="p-2">
                                                 <a class="hover:border-yellow-500 border-b"
                                                    href="{{route('lots.show', $lot->id)}}">
-                                                    <strong>{{Str::limit($lot->name, 20)}}</strong>
+                                                    <strong>{{ $lot->short_name }}</strong>
                                                 </a>
                                             </div>
-                                            <div class="p-2">{{Str::limit($lot->description, 40)}}</div>
+                                            <div class="p-2">{{ $lot->short_description }}</div>
                                         </div>
                                     </div>
                                 @endforeach

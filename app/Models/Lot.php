@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Lot extends Model
 {
@@ -82,6 +83,26 @@ class Lot extends Model
     public function getStartPriceAttribute($value)
     {
         return $this->bids->isNotEmpty() ? $this->bids->max('price') : $value;
+    }
+
+    /**
+     * Get short lot name.
+     *
+     * @return string
+     */
+    public function getShortNameAttribute()
+    {
+        return Str::limit($this->name, 20);
+    }
+
+    /**
+     * Get short lot description without HTML tags.
+     *
+     * @return string
+     */
+    public function getShortDescriptionAttribute()
+    {
+        return strip_tags(Str::limit($this->description, 40));
     }
 
     /**
