@@ -52,10 +52,19 @@
                                                           d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z"
                                                           clip-rule="evenodd"/>
                                                 </svg>
-                                                {{$lot->category->name}}
+                                                {{ $lot->category->name }}
                                             </div>
                                             <div class="flex">
                                                 <bid-countdown-timer :sale-timestamp="{{ $lot->sale_timestamp }}"></bid-countdown-timer>
+                                            </div>
+                                            <div class="flex flex-row">
+                                                <svg class="w-4 mr-1"
+                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                     fill="currentColor">
+                                                    <path
+                                                        d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"/>
+                                                </svg>
+                                                <unique-bids :lot="{{ $lot->id }}" :bid="{{ $lot->start_price }}" :unique="{{ $lot->number_of_unique_bids }}"></unique-bids>
                                             </div>
                                             <div class="flex">
                                                 <svg class="w-4 mr-1"
@@ -71,7 +80,7 @@
                                     </div>
                                 @endforeach
                         </div>
-                        <div>{{$lots->links()}}</div>
+                        <div>{{ $lots->links() }}</div>
                         @else
                             <div>No lots found.</div>
                         @endif

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Bid extends Model
 {
     use HasFactory;
+
+    public function lot()
+    {
+        return $this->belongsTo(Lot::class);
+    }
 }

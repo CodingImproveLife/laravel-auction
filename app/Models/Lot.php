@@ -106,6 +106,16 @@ class Lot extends Model
     }
 
     /**
+     * Get the number of unique bids for the lot.
+     *
+     * @return int
+     */
+    public function getNumberOfUniqueBidsAttribute()
+    {
+        return $this->bids->groupBy('user_id')->count();
+    }
+
+    /**
      * Deleting a folder with images after deleting a lot.
      */
     protected static function booted()

@@ -15,6 +15,7 @@ class BidEvent implements ShouldBroadcast
 
     public int $lot_id;
     public int $bid_price;
+    public int $unique_bids;
 
     /**
      * Create a new event instance.
@@ -25,6 +26,7 @@ class BidEvent implements ShouldBroadcast
     {
         $this->lot_id = $bid->lot_id;
         $this->bid_price = $bid->price;
+        $this->unique_bids = $bid->lot->number_of_unique_bids;
     }
 
     /**
