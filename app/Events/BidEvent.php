@@ -38,7 +38,7 @@ class BidEvent implements ShouldBroadcast
     }
 
     /**
-     * Channel name.
+     * Event name.
      *
      * @return string
      */
