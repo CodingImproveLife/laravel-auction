@@ -3870,17 +3870,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _mixins_websocket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/websocket */ "./resources/js/mixins/websocket.js");
 //
 //
 //
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['lot', 'bid'],
+  mixins: [_mixins_websocket__WEBPACK_IMPORTED_MODULE_0__.default],
   data: function data() {
     return {
-      socket: io("http://localhost" + ':' + "5555"),
       maxBid: this.bid,
       lotId: this.lot
     };
@@ -3992,6 +3994,27 @@ if (document.querySelector('#lot-description')) {
     });
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/mixins/websocket.js":
+/*!******************************************!*\
+  !*** ./resources/js/mixins/websocket.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      socket: io("http://localhost" + ':' + "5555")
+    };
+  }
+});
 
 /***/ }),
 

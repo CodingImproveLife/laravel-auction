@@ -5,11 +5,14 @@
 </template>
 
 <script>
+
+import websocket from "../mixins/websocket";
+
 export default {
     props: ['lot', 'bid'],
+    mixins: [websocket],
     data() {
         return {
-            socket: io(process.env.MIX_APP_URL + ':' + process.env.MIX_NODE_PORT),
             maxBid: this.bid,
             lotId: this.lot,
         }
