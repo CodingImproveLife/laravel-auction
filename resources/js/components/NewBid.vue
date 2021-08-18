@@ -18,7 +18,7 @@ export default {
         }
     },
     created() {
-        this.socket.on("Bid:NewBid", (message) => {
+        this.socket.on(this.event, (message) => {
             if (message.lot_id === this.lotId) {
                 this.maxBid = message.bid_price
             }

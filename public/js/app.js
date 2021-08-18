@@ -3890,7 +3890,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.socket.on("Bid:NewBid", function (message) {
+    this.socket.on(this.event, function (message) {
       if (message.lot_id === _this.lotId) {
         _this.maxBid = message.bid_price;
       }
@@ -4011,7 +4011,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      socket: io("http://localhost" + ':' + "5555")
+      socket: io("http://localhost" + ':' + "5555"),
+      event: "Bid:NewBid"
     };
   }
 });
