@@ -23,6 +23,7 @@ class LotController extends Controller
     public function index()
     {
         $lots = Lot::where('user_id', Auth::id())
+            ->with('images')
             ->orderByDesc('updated_at')
             ->paginate(6);
         return view('lots.all', compact('lots'));
