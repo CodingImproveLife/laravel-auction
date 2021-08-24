@@ -24,12 +24,14 @@
                     bg-green-500 rounded-lg focus:shadow-outline hover:bg-green-600">
                         Top up balance
                     </a>
-                    <a
-                        href="{{ route('admin.users.index') }}"
-                        class="flex justify-center items-center h-10 w-40 px-5 mt-3 mr-5 text-gray-100 transition-colors duration-200
-                    bg-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-600">
-                        Show all users
-                    </a>
+                    @can('edit users')
+                        <a
+                            href="{{ route('admin.users.index') }}"
+                            class="flex justify-center items-center h-10 w-40 px-5 mt-3 mr-5 text-gray-100 transition-colors duration-200
+                        bg-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-600">
+                            Show all users
+                        </a>
+                    @endcan
                 </div>
             </div>
         </div>
