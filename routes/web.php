@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
         'as' => 'admin.',
         'middleware' => ['can:edit users']
     ], function () {
-        Route::resource('users', \App\Http\Controllers\Admin\UsersController::class)->only('index', 'edit');
+        Route::resource('users', \App\Http\Controllers\Admin\UsersController::class)->only('index', 'edit', 'update');
     });
 });
 
