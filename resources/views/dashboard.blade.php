@@ -25,12 +25,20 @@
                         Top up balance
                     </a>
                     @can('edit users')
-                        <a
-                            href="{{ route('admin.users.index') }}"
-                            class="flex justify-center items-center h-10 w-40 px-5 mt-3 mr-5 text-gray-100 transition-colors duration-200
+                        <div class="flex">
+                            <a
+                                href="{{ route('admin.users.index') }}"
+                                class="flex justify-center items-center h-10 w-40 px-5 mt-3 mr-5 text-gray-100 transition-colors duration-200
                         bg-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-600">
-                            Show all users
-                        </a>
+                                Show all users
+                            </a>
+                            <a
+                                href="{{ route('admin.lots.index') }}"
+                                class="flex justify-center items-center h-10 w-40 px-5 mt-3 mr-5 text-gray-100 transition-colors duration-200
+                        bg-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-600">
+                                Show all lots
+                            </a>
+                        </div>
                     @endcan
                 </div>
             </div>
