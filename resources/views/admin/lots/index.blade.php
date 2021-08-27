@@ -55,7 +55,8 @@
                                         </td>
                                         <td class="px-6 py-3">
                                             <a
-                                                href="#"
+                                                href="{{ route('lots.edit', $lot->id) }}"
+                                                target="_blank"
                                                 class="flex justify-center items-center h-10 w-10 mr-2 text-gray-100 transition-colors duration-200
                 bg-yellow-500 rounded-lg focus:shadow-outline hover:bg-yellow-600">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -66,7 +67,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    There is no users
+                                    There is no lots
                                 @endforelse
                                 </tbody>
                             </table>

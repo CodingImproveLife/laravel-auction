@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('edit-lot', function (User $user, Lot $lot) {
-            return $user->id === $lot->user_id;
+            return $user->id === $lot->user_id || $user->hasPermissionTo('edit lots');
         });
 
         Gate::define('store-bid', function (User $user, Lot $lot) {
