@@ -67,7 +67,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    There is no lots
+                                    There are no lots.
                                 @endforelse
                                 </tbody>
                             </table>

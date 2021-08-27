@@ -68,7 +68,7 @@
                                     </td>
                                 </tr>
                                 @empty
-                                    There is no users
+                                    There are no users.
                                 @endforelse
                                 </tbody>
                             </table>
