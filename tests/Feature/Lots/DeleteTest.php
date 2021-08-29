@@ -38,21 +38,21 @@ class DeleteTest extends TestCase
         ]);
     }
 
-    public function test_user_can_delete_lot()
+    public function test_user_can_delete_the_lot()
     {
         $response = $this->actingAs($this->owner)->delete('/lots/' . $this->lot->id);
 
         $response->assertSessionHas('success', 'Lot delete successfully.');
     }
 
-    public function test_admin_can_delete_lot()
+    public function test_admin_can_delete_the_lot()
     {
         $response = $this->actingAs($this->admin)->delete('/lots/' . $this->lot->id);
 
         $response->assertSessionHas('success', 'Lot delete successfully.');
     }
 
-    public function test_non_owner_cannot_delete_lot()
+    public function test_non_owner_cannot_delete_the_lot()
     {
         $response = $this->actingAs($this->nonOwner)->delete('/lots/' . $this->lot->id);
 
