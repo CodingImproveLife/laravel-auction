@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div id="app" class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -49,8 +49,9 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-3">
-                                            <div class="text-sm text-gray-900">
-                                                {{ $lot->status }}
+                                            <div class="flex justify-center">
+                                                <lot-status-badge class="px-2 py-1 text-xs h-5 font-bold leading-none rounded-full"
+                                                            status="{{ $lot->status }}"></lot-status-badge>
                                             </div>
                                         </td>
                                         <td class="px-6 py-3">

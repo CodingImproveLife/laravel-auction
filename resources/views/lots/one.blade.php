@@ -12,9 +12,8 @@
                     @include('layouts.success-message')
                     @include('layouts.errors-message')
                     <div class="flex justify-between mb-3 mr-3">
-                        <div class="px-2 py-1 text-xs h-5 font-bold leading-none text-yellow-100 bg-yellow-600 rounded-full">
-                            {{ $lot->status }}
-                        </div>
+                        <lot-status-badge class="px-2 py-1 text-xs h-5 font-bold leading-none rounded-full"
+                                    status="{{ $lot->status }}"></lot-status-badge>
                         <div class="text-green-500 text-5xl">
                             <new-bid :lot="{{ $lot->id }}" :bid="{{ $lot->start_price }}"></new-bid>
                         </div>
