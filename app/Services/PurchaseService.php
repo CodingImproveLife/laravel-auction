@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\LotPurchasedEvent;
 use App\Models\Bid;
 use App\Models\Lot;
 use App\Models\Purchase;
@@ -12,7 +13,7 @@ class PurchaseService
 {
     private Purchase $purchase;
     private Lot $lot;
-    private ?Bid $bid;
+    private ?Bid $bid = null;
 
     public function __construct(Purchase $purchase)
     {
@@ -32,6 +33,7 @@ class PurchaseService
 
         if (isset($this->bid)) {
             $this->confirmLotPurchase();
+            event(new LotPurchasedEvent($this->purchase));
         } else {
             $this->setLotStatus('draft');
         }
