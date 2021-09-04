@@ -3,6 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\LotPurchasedEvent;
+use App\Mail\Purchases\LotBought;
+use Illuminate\Support\Facades\Mail;
 
 class NotifyBuyer
 {
@@ -14,6 +16,7 @@ class NotifyBuyer
      */
     public function handle(LotPurchasedEvent $event)
     {
-        //
+        Mail::to($event->purchase->user)
+            ->send(new LotBought($event->purchase->lot, $event->purchase->price));
     }
 }
