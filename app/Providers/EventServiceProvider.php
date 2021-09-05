@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\LotPurchasedEvent;
 use App\Listeners\NotifyBuyer;
+use App\Listeners\NotifySeller;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,6 +23,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         LotPurchasedEvent::class => [
             NotifyBuyer::class,
+            NotifySeller::class,
         ],
     ];
 
