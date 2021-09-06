@@ -11,6 +11,7 @@ Vue.component('bid-countdown-timer', require('./components/BidCountdownTimer.vue
 Vue.component('new-bid', require('./components/NewBid.vue').default);
 Vue.component('unique-bids', require('./components/UniqueBids').default);
 Vue.component('lot-status-badge', require('./components/LotStatusBadge').default);
+Vue.component('user-purchases', require('./components/UserPurchases').default);
 
 const app = new Vue({
     el: '#app'
