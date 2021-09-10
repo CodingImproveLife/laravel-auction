@@ -9,6 +9,6 @@ class PurchaseController extends Controller
 {
     public function getUserPurchases()
     {
-        return Purchase::with('lot:id,name')->where('user_id', Auth::id())->get()->toJson();
+        return Purchase::with('lot:id,name')->where('user_id', Auth::id())->paginate(5);
     }
 }
