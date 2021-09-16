@@ -4051,7 +4051,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('purchases?page=' + page).then(function (response) {
+      axios.get('api/purchases?page=' + page).then(function (response) {
         _this.purchases = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -29228,7 +29228,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "text-sm" }, [
     _vm.purchases.total > 0
       ? _c(
           "div",
@@ -29343,7 +29343,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "grid grid-cols-4" }, [
+    return _c("div", { staticClass: "grid grid-cols-4 font-semibold" }, [
       _c("span", [_vm._v("Lot name")]),
       _vm._v(" "),
       _c("span", [_vm._v("Seller")]),

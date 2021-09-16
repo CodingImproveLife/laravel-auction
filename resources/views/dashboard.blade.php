@@ -10,8 +10,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @include('layouts.success-message')
-                    <p>You balance:</p>
+                    <h3 class="mb-4 font-semibold text-lg text-gray-800 leading-tight">You balance:</h3>
                     <div class="text-green-500 text-5xl my-2">${{ Auth::user()->balance }}</div>
+                    <h3 class="mb-4 font-semibold text-lg text-gray-800 leading-tight">You purchases:</h3>
                     <user-purchases></user-purchases>
                     <a
                         href="{{ route('profile.edit', Auth::id()) }}"

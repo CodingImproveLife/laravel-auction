@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('lot-images/{id}', [App\Http\Controllers\LotImageController::class, 'destroy'])->name('lot-images.destroy');
     Route::get('profile/add-money', [App\Http\Controllers\ProfileController::class, 'topUpBalance'])->name('profile.addMoney');
     Route::post('bid', [App\Http\Controllers\BidController::class, 'store'])->name('bid');
-    Route::get('purchases', [App\Http\Controllers\PurchaseController::class, 'getUserPurchases'])->name('purchases');
 
     Route::group([
         'prefix' => 'admin',

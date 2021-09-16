@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="text-sm">
         <div v-if="purchases.total > 0">
-            <div class="grid grid-cols-4">
+            <div class="grid grid-cols-4 font-semibold">
                 <span>Lot name</span>
                 <span>Seller</span>
                 <span>Price</span>
@@ -54,7 +54,7 @@ export default {
     },
     methods: {
         getPurchases(page = 1) {
-            axios.get('purchases?page=' + page)
+            axios.get('api/purchases?page=' + page)
                 .then(response => {
                     this.purchases = response.data;
                 })
