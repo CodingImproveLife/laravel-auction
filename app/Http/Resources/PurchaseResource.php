@@ -19,7 +19,7 @@ class PurchaseResource extends JsonResource
             'lot_name' => $this->lot->name,
             'price' => $this->price,
             'seller' => $this->lot->user->name,
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at->toDayDateTimeString(),
         ];
     }
 }
