@@ -4040,7 +4040,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      purchases: {}
+      purchases: {},
+      pagination: {}
     };
   },
   mounted: function mounted() {
@@ -4052,7 +4053,8 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get('api/purchases?page=' + page).then(function (response) {
-        _this.purchases = response.data;
+        _this.purchases = response.data.data;
+        _this.pagination = response.data.meta;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -29229,26 +29231,32 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "text-sm" }, [
-    _vm.purchases.total > 0
+    _vm.pagination.total > 0
       ? _c(
           "div",
           [
             _vm._m(0),
             _vm._v(" "),
-            _vm._l(_vm.purchases.data, function(purchase) {
-              return _c("div", { staticClass: "grid grid-cols-4 my-4" }, [
-                _c("span", [_vm._v(_vm._s(purchase.lot.name))]),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(purchase.lot.user.name))]),
-                _vm._v(" "),
-                _c("span", [_vm._v("$" + _vm._s(purchase.price))]),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(purchase.created_at))])
-              ])
+            _vm._l(_vm.purchases, function(purchase) {
+              return _c(
+                "div",
+                {
+                  staticClass: "grid grid-cols-4 px-2 py-3 hover:bg-green-100"
+                },
+                [
+                  _c("span", [_vm._v(_vm._s(purchase.lot_name))]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(purchase.seller))]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("$" + _vm._s(purchase.price))]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(purchase.created_at))])
+                ]
+              )
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "flex" }, [
-              _vm.purchases.current_page !== 1
+            _c("div", { staticClass: "flex mt-4" }, [
+              _vm.pagination.current_page !== 1
                 ? _c("div", [
                     _c(
                       "button",
@@ -29258,7 +29266,7 @@ var render = function() {
                         on: {
                           click: function($event) {
                             return _vm.getPurchases(
-                              _vm.purchases.current_page - 1
+                              _vm.pagination.current_page - 1
                             )
                           }
                         }
@@ -29290,7 +29298,7 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.purchases.current_page !== _vm.purchases.last_page
+              _vm.pagination.current_page !== _vm.pagination.last_page
                 ? _c("div", [
                     _c(
                       "button",
@@ -29300,7 +29308,7 @@ var render = function() {
                         on: {
                           click: function($event) {
                             return _vm.getPurchases(
-                              _vm.purchases.current_page + 1
+                              _vm.pagination.current_page + 1
                             )
                           }
                         }
@@ -29343,15 +29351,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "grid grid-cols-4 font-semibold" }, [
-      _c("span", [_vm._v("Lot name")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("Seller")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("Price")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("Date")])
-    ])
+    return _c(
+      "div",
+      { staticClass: "grid grid-cols-4 px-2 py-3 font-semibold" },
+      [
+        _c("span", [_vm._v("Lot name")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Seller")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Price")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("Date")])
+      ]
+    )
   }
 ]
 render._withStripped = true

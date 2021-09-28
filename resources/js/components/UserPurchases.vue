@@ -1,21 +1,21 @@
 <template>
     <div class="text-sm">
-        <div v-if="purchases.total > 0">
-            <div class="grid grid-cols-4 font-semibold">
+        <div v-if="pagination.total > 0">
+            <div class="grid grid-cols-4 px-2 py-3 font-semibold">
                 <span>Lot name</span>
                 <span>Seller</span>
                 <span>Price</span>
                 <span>Date</span>
             </div>
-            <div v-for="purchase in purchases.data" class="grid grid-cols-4 my-4">
-                <span>{{ purchase.lot.name }}</span>
-                <span>{{ purchase.lot.user.name }}</span>
+            <div v-for="purchase in purchases" class="grid grid-cols-4 px-2 py-3 hover:bg-green-100">
+                <span>{{ purchase.lot_name }}</span>
+                <span>{{ purchase.seller }}</span>
                 <span>${{ purchase.price }}</span>
                 <span>{{ purchase.created_at }}</span>
             </div>
-            <div class="flex">
-                <div v-if="purchases.current_page !== 1">
-                    <button v-on:click="getPurchases(purchases.current_page - 1)"
+            <div class="flex mt-4">
+                <div v-if="pagination.current_page !== 1">
+                    <button v-on:click="getPurchases(pagination.current_page - 1)"
                             class="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-300 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
@@ -24,8 +24,8 @@
                         </svg>
                     </button>
                 </div>
-                <div v-if="purchases.current_page !== purchases.last_page">
-                    <button v-on:click="getPurchases(purchases.current_page + 1)"
+                <div v-if="pagination.current_page !== pagination.last_page">
+                    <button v-on:click="getPurchases(pagination.current_page + 1)"
                             class="inline-flex items-center justify-center w-10 h-10 text-gray-300 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
@@ -47,6 +47,7 @@ export default {
     data() {
         return {
             purchases: {},
+            pagination: {},
         }
     },
     mounted() {
@@ -56,7 +57,8 @@ export default {
         getPurchases(page = 1) {
             axios.get('api/purchases?page=' + page)
                 .then(response => {
-                    this.purchases = response.data;
+                    this.purchases = response.data.data;
+                    this.pagination = response.data.meta;
                 })
                 .catch(error => {
                     console.log(error);
