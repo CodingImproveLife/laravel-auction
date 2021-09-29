@@ -60,6 +60,7 @@ class LotController extends Controller
      */
     public function show(Lot $lot)
     {
+        Gate::authorize('show-lot', $lot);
         return view('lots.one', compact('lot'));
     }
 
