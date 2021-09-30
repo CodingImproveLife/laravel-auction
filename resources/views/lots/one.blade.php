@@ -64,7 +64,7 @@
                                 </button>
                             </form>
                         </div>
-                    @else
+                    @elseif($lot->status === 'On sale')
                         <div class="mt-5">
                             @include('layouts.bid-form')
                         </div>
